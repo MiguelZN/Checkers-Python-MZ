@@ -16,19 +16,10 @@
         <entry file="file://$PROJECT_DIR$/CheckersMZVERSION1.11.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="1031" column="30" selection-start-line="1031" selection-start-column="30" selection-end-line="1031" selection-end-column="30" />
+              <caret line="1221" column="31" selection-start-line="1221" selection-start-column="31" selection-end-line="1221" selection-end-column="31" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/simpleaudio/shiny.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -174,7 +165,7 @@
     <entry file="file://$PROJECT_DIR$/CheckersMZVERSION1.11.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="1031" column="30" selection-start-line="1031" selection-start-column="30" selection-end-line="1031" selection-end-column="30" />
+          <caret line="1221" column="31" selection-start-line="1221" selection-start-column="31" selection-end-line="1221" selection-end-column="31" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

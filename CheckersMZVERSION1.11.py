@@ -5,7 +5,10 @@ from enum import Enum
 import simpleaudio as sa
 
 #Current issues:
-#MAC: when leaving current game causes issues
+#MAC:
+#1) when leaving current game causes issues (duplicate tabs)
+#2) changing the color of board does not work but works on windows
+#3) buttonclick.wav does not work with simpleaudio library but works with windows winsound
 
 #Three operating systems is: 'windows' or 'other' for mac,linux,etc
 if('window' in platform.system().lower()):
@@ -1216,7 +1219,7 @@ class game():
         self.run()
 
     def gotoMainMenu(self):
-        playSound("buttonclick.wav")
+        playSound("checkermove2.wav")
 
         for i in self.guilist:
             i.grid_remove()
