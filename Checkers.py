@@ -1265,7 +1265,7 @@ class game():
             self.appendButtons()
             return None
 
-        if(self.isGameUnderway==""):
+        if(self.isGameUnderway=="" or self.isGameUnderway=="cpu"):
             self.player1 = "p1"
             self.player2 = "p2"
             self.board = self.pvpboard
@@ -1320,7 +1320,7 @@ class game():
             return None
 
 
-        if(self.isGameUnderway==""):
+        if(self.isGameUnderway=="" or self.isGameUnderway=="pvp"):
             self.isGameUnderway = "cpu"
             self.board = self.cpuboard
             self.numberofgames = 0
