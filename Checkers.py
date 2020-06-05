@@ -9,6 +9,9 @@ import simpleaudio as sa
 #1) when leaving current game causes issues (duplicate tabs)
 #2) changing the color of board does not work but works on windows
 #3) buttonclick.wav does not work with simpleaudio library but works with windows winsound
+#4) Return to current game from within game makes a duplicate 'Game Options tab'
+
+#Works when you restart a new game from the current game mode
 
 #Three operating systems is: 'windows' or 'other' for mac,linux,etc
 if('window' in platform.system().lower()):
