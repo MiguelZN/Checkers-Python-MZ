@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Checkers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="1496" column="44" selection-start-line="1496" selection-start-column="44" selection-end-line="1496" selection-end-column="44" />
+            <state relative-caret-position="150">
+              <caret line="1337" column="13" selection-start-line="1337" selection-start-column="13" selection-end-line="1337" selection-end-column="13" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -50,6 +50,7 @@
       <find>new</find>
       <find>createNew</find>
       <find>return to</find>
+      <find>return to current</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,8 +213,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Checkers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="1496" column="44" selection-start-line="1496" selection-start-column="44" selection-end-line="1496" selection-end-column="44" />
+        <state relative-caret-position="150">
+          <caret line="1337" column="13" selection-start-line="1337" selection-start-column="13" selection-end-line="1337" selection-end-column="13" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

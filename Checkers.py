@@ -1282,7 +1282,7 @@ class game():
                                                      board1color=self.board1color, board2color=self.board2color)
             self.CheckersBoardGUI.grid(row=1, column=1, pady=20)
 
-            self.subOptionsTab.add_cascade(label = "Return to Current Game", command = self.ReturnToGame)
+            #self.subOptionsTab.add_cascade(label = "Return to Current Game", command = self.ReturnToGame)
 
             self.infolabel = infoGUI(self.CheckersGUIPVP, self.isGameUnderway, self.current)
             self.infolabel.grid(row=1, column=0, pady=10, padx=10)
@@ -1335,7 +1335,7 @@ class game():
                                                      board1color=self.board1color, board2color=self.board2color)
             self.CheckersBoardGUI.grid(row=1, column=1, pady=20)
 
-            self.subOptionsTab.add_cascade(label="Return to Current Game", command=self.ReturnToGame)
+            #self.subOptionsTab.add_cascade(label="Return to Current Game", command=self.ReturnToGame)
 
             self.infolabel = infoGUI(self.CheckersGUICPU, self.isGameUnderway, self.current)
             self.infolabel.grid(row=1, column=0, pady=10, padx=10)
