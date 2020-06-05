@@ -1,10 +1,49 @@
 from tkinter import *
 from PIL import ImageTk,Image
-import shelve, time, random, winsound, threading, functools
+import shelve, time, random, threading, functools,platform,os
+from enum import Enum
+import simpleaudio as sa
 
+
+
+
+print(platform.system())
+
+#Three operating systems is: 'windows' or 'other' for mac,linux,etc
+if('window' in platform.system().lower()):
+    OS = 'windows'
+    import winsound
+else:
+    OS = 'other'
+
+SL = "" #contains the slash direction either '\' for windows or '/' for mac,linux,etc
+if(OS=='windows'):
+    SL = '\\'
+else:
+    SL = '/'
+
+
+#PATHS:
+PWD_PATH = os.path.dirname(os.path.realpath(sys.argv[0]))
+IMAGE_DIR = PWD_PATH+SL+'images'
+SOUND_DIR = PWD_PATH+SL+'sounds'
+
+print(IMAGE_DIR)
+print(SOUND_DIR)
+
+
+def playSound(soundfile:str):
+    if (OS == 'windows'):
+        winsound.PlaySound(
+            SOUND_DIR + SL + soundfile,
+            winsound.SND_FILENAME + winsound.SND_ASYNC)
+
+    else:
+        ''
+        #wave_obj = sa.WaveObject.from_wave_file(SOUND_DIR + SL + soundfile)
+        #play_obj = wave_obj.play()
 
 class checkerpiece():
-
     def __init__(self, player, selected, row, column, crowned):
         self.__playerowned = player
         self.__isSelected = False
@@ -152,28 +191,27 @@ class CheckersBoardGUI(Frame):
 
     def __init__(self, root, size, board1color, board2color, board):
         super().__init__(root)
-        RedChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redchecker.png")
+        RedChecker = Image.open(IMAGE_DIR+SL+"redchecker.png")
         RedChecker.thumbnail((30, 30))
         self.REDCHECKER = ImageTk.PhotoImage(RedChecker)
 
-        RedKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redking2.png")
+        RedKing = Image.open(IMAGE_DIR+SL+"redking2.png")
         RedKing.thumbnail((30, 30))
         self.REDKING = ImageTk.PhotoImage(RedKing)
 
-        BlackChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackchecker2.png")
+        BlackChecker = Image.open(IMAGE_DIR+SL+"blackchecker2.png")
         BlackChecker.thumbnail((30, 30))
         self.BLACKCHECKER = ImageTk.PhotoImage(BlackChecker)
 
-        BlackKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackking2.png")
+        BlackKing = Image.open(IMAGE_DIR+SL+"blackking2.png")
         BlackKing.thumbnail((30, 30))
         self.BLACKKING = ImageTk.PhotoImage(BlackKing)
 
-        SelectedChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\selectedchecker.png")
+        SelectedChecker = Image.open(IMAGE_DIR+SL+"selectedchecker.png")
         SelectedChecker.thumbnail((30, 30))
         self.SELECTEDCHECKER = ImageTk.PhotoImage(SelectedChecker)
 
-        Transparent = Image.open(
-            r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\transparent.png")
+        Transparent = Image.open(IMAGE_DIR+SL+"transparent.png")
         SelectedChecker.thumbnail((30, 30))
         self.TRANSPARENT = ImageTk.PhotoImage(Transparent)
 
@@ -197,24 +235,23 @@ class SettingsGUI(Frame):
     def __init__(self,root, gamewidth, gameheight):
         super().__init__(root, width = gamewidth, height = gameheight+100, bg = "navajowhite3")
 
-        RedChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redchecker.png")
+        RedChecker = Image.open(IMAGE_DIR+SL+"redchecker.png")
         RedChecker.thumbnail((60, 60))
         self.REDCHECKER = ImageTk.PhotoImage(RedChecker)
 
-        RedKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redking2.png")
+        RedKing = Image.open(IMAGE_DIR+SL+"redking2.png")
         RedKing.thumbnail((60, 60))
         self.REDKING = ImageTk.PhotoImage(RedKing)
 
-        BlackChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackchecker2.png")
+        BlackChecker = Image.open(IMAGE_DIR+SL+"blackchecker2.png")
         BlackChecker.thumbnail((60, 60))
         self.BLACKCHECKER = ImageTk.PhotoImage(BlackChecker)
 
-        BlackKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackking2.png")
+        BlackKing = Image.open(IMAGE_DIR+SL+"blackking2.png")
         BlackKing.thumbnail((60, 60))
         self.BLACKKING = ImageTk.PhotoImage(BlackKing)
 
-        SelectedChecker = Image.open(
-            r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\selectedchecker.png")
+        SelectedChecker = Image.open(IMAGE_DIR+SL+"selectedchecker.png")
         SelectedChecker.thumbnail((60, 60))
         self.SELECTEDCHECKER = ImageTk.PhotoImage(SelectedChecker)
 
@@ -294,24 +331,23 @@ class mainMenu(Frame):
     def __init__(self,root, gamewidth, gameheight, listofgui):
         super().__init__(root, width = gamewidth, height = gameheight+100, bg = "navajowhite3")
 
-        RedChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redchecker.png")
+        RedChecker = Image.open(IMAGE_DIR+SL+"redchecker.png")
         RedChecker.thumbnail((60, 60))
         self.REDCHECKER = ImageTk.PhotoImage(RedChecker)
 
-        RedKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redking2.png")
+        RedKing = Image.open(IMAGE_DIR+SL+"redking2.png")
         RedKing.thumbnail((60, 60))
         self.REDKING = ImageTk.PhotoImage(RedKing)
 
-        BlackChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackchecker2.png")
+        BlackChecker = Image.open(IMAGE_DIR+SL+"blackchecker2.png")
         BlackChecker.thumbnail((60, 60))
         self.BLACKCHECKER = ImageTk.PhotoImage(BlackChecker)
 
-        BlackKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackking2.png")
+        BlackKing = Image.open(IMAGE_DIR+SL+"blackking2.png")
         BlackKing.thumbnail((60, 60))
         self.BLACKKING = ImageTk.PhotoImage(BlackKing)
 
-        SelectedChecker = Image.open(
-            r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\selectedchecker.png")
+        SelectedChecker = Image.open(IMAGE_DIR+SL+"selectedchecker.png")
         SelectedChecker.thumbnail((60, 60))
         self.SELECTEDCHECKER = ImageTk.PhotoImage(SelectedChecker)
 
@@ -358,8 +394,10 @@ class mainMenu(Frame):
         if(self.MAINMENUSELECTED == True):
             self.leftcimage.config(image = random.choice(self.listofcheckerimages))
             self.rightcimage.config(image = random.choice(self.listofcheckerimages))
-            winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\checkermove2.wav",
-                               winsound.SND_FILENAME + winsound.SND_ASYNC)
+
+
+            playSound("checkermove2.wav")
+
             self.hideAll()
 
 
@@ -415,29 +453,29 @@ class infoGUI(Frame):
 
 #GOOD NOW
     def __init__(self,root, gametype, current):
-        RedChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redchecker.png")
+        RedChecker = Image.open(IMAGE_DIR+SL+"redchecker.png")
         RedChecker.thumbnail((30, 30))
         self.REDCHECKER = ImageTk.PhotoImage(RedChecker)
 
-        RedKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\redking2.png")
+        RedKing = Image.open(IMAGE_DIR+SL+"redking2.png")
         RedKing.thumbnail((30, 30))
         self.REDKING = ImageTk.PhotoImage(RedKing)
 
-        BlackChecker = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackchecker2.png")
+        BlackChecker = Image.open(IMAGE_DIR+SL+"blackchecker2.png")
         BlackChecker.thumbnail((30, 30))
         self.BLACKCHECKER = ImageTk.PhotoImage(BlackChecker)
 
-        BlackKing = Image.open(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\blackking2.png")
+        BlackKing = Image.open(IMAGE_DIR+SL+"blackking2.png")
         BlackKing.thumbnail((30, 30))
         self.BLACKKING = ImageTk.PhotoImage(BlackKing)
 
         SelectedChecker = Image.open(
-            r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\selectedchecker.png")
+            IMAGE_DIR+SL+"selectedchecker.png")
         SelectedChecker.thumbnail((30, 30))
         self.SELECTEDCHECKER = ImageTk.PhotoImage(SelectedChecker)
 
         Transparent = Image.open(
-            r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\transparent.png")
+            IMAGE_DIR+SL+"transparent.png")
         SelectedChecker.thumbnail((30, 30))
         self.TRANSPARENT = ImageTk.PhotoImage(Transparent)
 
@@ -991,8 +1029,10 @@ class game():
         elif (self.board.getBoard()[tuple[0]][tuple[1]].getPlayer()== self.current):
             self.selected.setNewPosn(tuple[0],tuple[1])
             # PLACE isVALID METHOD HERE------------- Because if it's a valid move(available emtpy spot) it selects the position
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\checkermove2.wav",
-                           winsound.SND_FILENAME + winsound.SND_ASYNC)
+
+
+        playSound("checkmove2.wav")
+
         #self.board.getBoard()[tuple[0]][tuple[1]].Select()
         #print("Selected: Row:"+str(self.selected.getRow())+",Column:"+str(self.selected.getColumn()))
         #place the sound here and the isVALID statement and what occurs if it is valid in this function
@@ -1178,8 +1218,8 @@ class game():
         self.run()
 
     def gotoMainMenu(self):
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",
-                           winsound.SND_FILENAME + winsound.SND_ASYNC)
+        playSound("buttonclick.wav")
+
         for i in self.guilist:
             i.grid_remove()
         self.mainMenu.Show()
@@ -1250,14 +1290,12 @@ class game():
             self.updateColor(self.CheckersGUIPVP)
             self.CheckersGUIPVP.Show()
 
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",winsound.SND_FILENAME + winsound.SND_ASYNC)
-
-
+        playSound("buttonclick.wav")
     def SelectedvsCPU(self):
         self.selected = selected(-1, -1)
         self.createGameOptionsTab(self.createNewGame)
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",
-                           winsound.SND_FILENAME + winsound.SND_ASYNC)
+
+        playSound("buttonclick.wav")
 
         #if a game has already started just recheck everything
         if (self.subOptionsTab.index(3) == 3):
@@ -1311,9 +1349,8 @@ class game():
         self.CheckersGUICPU.Hide()
         self.SettingsGUI.Show()
         self.optionsTab.delete(2)
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",
-                           winsound.SND_FILENAME + winsound.SND_ASYNC)
 
+        playSound("buttonclick.wav")
 
 
     def CheckSingleUserAmount(self, board, user):
@@ -1378,9 +1415,8 @@ class game():
         elif(self.isGameUnderway=="cpu"):
             self.current=self.decidewhogoes("cpu")
         self.infolabel.update()
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",
-                           winsound.SND_FILENAME + winsound.SND_ASYNC)
 
+        playSound("buttonclick.wav")
 
     def SkipTurn(self):
         if(self.isGameUnderway=="cpu"):
@@ -1394,9 +1430,8 @@ class game():
                 self.current="p2"
             else:
                 self.current="p1"
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",
-                           winsound.SND_FILENAME + winsound.SND_ASYNC)
 
+        playSound("buttonclick.wav")
     #updates the color of the board
     def updateColor(self, gametype):
         #gametype is either CheckersBoardPVP or CehckersBoardCPU
@@ -1410,8 +1445,8 @@ class game():
 
         self.appendButtons()
         self.winner = self.checkWinner()
-        winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",
-                           winsound.SND_FILENAME + winsound.SND_ASYNC)
+
+        playSound("buttonclick.wav")
 
     def createNewGame(self):
 
@@ -1549,8 +1584,9 @@ class game():
             #controls the CPU'sturn, i%800==0 means that every 800 milliseconds play a computer turn
             if (self.isGameUnderway == "cpu" and i%800==0 and self.current=="cpu" and self.isWinnerCpu == ""):
                 self.PlayCPUTurn()
-                winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\checkermove2.wav",
-                                   winsound.SND_FILENAME + winsound.SND_ASYNC)
+
+
+                playSound("checkermove2.wav")
 
 
             #Every tick check how many pieces of the opposite player each player owns
