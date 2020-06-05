@@ -1495,8 +1495,7 @@ class game():
             self.isGameUnderway = "pvp"
             self.appendButtons()
             self.winner = self.checkWinner()
-            winsound.PlaySound(r"C:\Users\Miguel\Desktop\EGGG\CISC108\FinishedProjects\Checkers\buttonclick.wav",
-                               winsound.SND_FILENAME + winsound.SND_ASYNC)
+
         elif(self.isGameUnderway=="cpu"):
             self.isGameUnderway = "cpu"
             self.isWinnerCpu = ""
