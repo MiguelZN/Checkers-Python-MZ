@@ -1224,17 +1224,14 @@ class game():
     def gotoMainMenu(self):
         playSound("checkermove2.wav")
 
-        self.isGameUnderway = ""
-
         for i in self.guilist:
             i.grid_remove()
         self.mainMenu.Show()
         self.optionsTab.delete(2)
         self.optionsTab.delete(1)
     def ReturnToGame(self):
+        self.optionsTab.delete(1)
         self.optionsTab.delete(2)
-
-
         if(self.isGameUnderway=="pvp"):
             self.createGameOptionsTab(self.createNewGame)
             self.mainMenu.Hide()
@@ -1255,6 +1252,8 @@ class game():
     def TwoPlayerButtonSelected(self):
         self.selected = selected(-1, -1)
         self.createGameOptionsTab(self.createNewGame)
+
+        playSound("checkermove.wav")
 
         if(self.subOptionsTab.index(3)==3):
             self.isGameUnderway = "pvp"
@@ -1283,7 +1282,7 @@ class game():
                                                      board1color=self.board1color, board2color=self.board2color)
             self.CheckersBoardGUI.grid(row=1, column=1, pady=20)
 
-            #self.subOptionsTab.add_cascade(label = "Return to Current Game", command = self.ReturnToGame)
+            self.subOptionsTab.add_cascade(label = "Return to Current Game", command = self.ReturnToGame)
 
             self.infolabel = infoGUI(self.CheckersGUIPVP, self.isGameUnderway, self.current)
             self.infolabel.grid(row=1, column=0, pady=10, padx=10)
@@ -1298,16 +1297,14 @@ class game():
             self.CheckersGUICPU.Hide()
             self.updateColor(self.CheckersGUIPVP)
             self.CheckersGUIPVP.Show()
+        else:
+            self.ReturnToGame()
 
-        playSound("checkermove.wav")
     def SelectedvsCPU(self):
         self.selected = selected(-1, -1)
         self.createGameOptionsTab(self.createNewGame)
 
-
         playSound("checkermove.wav")
-
-        self.isGameUnderway = "" #Resets game if set
 
         #if a game has already started just recheck everything
         if (self.subOptionsTab.index(3) == 3):
@@ -1338,7 +1335,7 @@ class game():
                                                      board1color=self.board1color, board2color=self.board2color)
             self.CheckersBoardGUI.grid(row=1, column=1, pady=20)
 
-            #self.subOptionsTab.add_cascade(label="Return to Current Game", command=self.ReturnToGame)
+            self.subOptionsTab.add_cascade(label="Return to Current Game", command=self.ReturnToGame)
 
             self.infolabel = infoGUI(self.CheckersGUICPU, self.isGameUnderway, self.current)
             self.infolabel.grid(row=1, column=0, pady=10, padx=10)
@@ -1353,6 +1350,9 @@ class game():
             self.updateColor(self.CheckersGUICPU)
             self.CheckersGUICPU.Show()
 
+        else:
+            self.ReturnToGame()
+
 
 
     def SettingsSelected(self):
@@ -1360,12 +1360,10 @@ class game():
         self.CheckersGUIPVP.Hide()
         self.CheckersGUICPU.Hide()
         self.SettingsGUI.Show()
-        self.optionsTab.delete(1)
         self.optionsTab.delete(2)
+        self.optionsTab.delete(1)
 
         playSound("checkermove.wav")
-
-        self.isGameUnderway = ""
 
 
     def CheckSingleUserAmount(self, board, user):
@@ -1419,7 +1417,7 @@ class game():
     def createGameOptionsTab(self, game):
         gameOptions = Menu()
 
-        #self.optionsTab.add_cascade(menu = gameOptions, label = "Game Options")
+        self.optionsTab.add_cascade(menu = gameOptions, label = "Game Options")
         gameOptions.add_cascade(label = "Start New Game", command = game)
         gameOptions.add_cascade(label = "Skip Turn", command = self.SkipTurn)
         gameOptions.add_cascade(label = "re-Randomize Turn", command = self.RandomizeTurn)
