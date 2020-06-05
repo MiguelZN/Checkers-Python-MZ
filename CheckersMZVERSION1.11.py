@@ -4,10 +4,8 @@ import shelve, time, random, threading, functools,platform,os
 from enum import Enum
 import simpleaudio as sa
 
-
-
-
-print(platform.system())
+#Current issues:
+#MAC: when leaving current game causes issues
 
 #Three operating systems is: 'windows' or 'other' for mac,linux,etc
 if('window' in platform.system().lower()):
@@ -40,8 +38,8 @@ def playSound(soundfile:str):
 
     else:
         ''
-        #wave_obj = sa.WaveObject.from_wave_file(SOUND_DIR + SL + soundfile)
-        #play_obj = wave_obj.play()
+        wave_obj = sa.WaveObject.from_wave_file(SOUND_DIR + SL + soundfile)
+        play_obj = wave_obj.play()
 
 class checkerpiece():
     def __init__(self, player, selected, row, column, crowned):
@@ -1031,7 +1029,7 @@ class game():
             # PLACE isVALID METHOD HERE------------- Because if it's a valid move(available emtpy spot) it selects the position
 
 
-        playSound("checkmove2.wav")
+        playSound("checkermove2.wav")
 
         #self.board.getBoard()[tuple[0]][tuple[1]].Select()
         #print("Selected: Row:"+str(self.selected.getRow())+",Column:"+str(self.selected.getColumn()))
@@ -1290,12 +1288,12 @@ class game():
             self.updateColor(self.CheckersGUIPVP)
             self.CheckersGUIPVP.Show()
 
-        playSound("buttonclick.wav")
+        playSound("checkermove.wav")
     def SelectedvsCPU(self):
         self.selected = selected(-1, -1)
         self.createGameOptionsTab(self.createNewGame)
 
-        playSound("buttonclick.wav")
+        playSound("checkermove.wav")
 
         #if a game has already started just recheck everything
         if (self.subOptionsTab.index(3) == 3):
@@ -1350,7 +1348,7 @@ class game():
         self.SettingsGUI.Show()
         self.optionsTab.delete(2)
 
-        playSound("buttonclick.wav")
+        playSound("checkermove.wav")
 
 
     def CheckSingleUserAmount(self, board, user):
@@ -1416,7 +1414,7 @@ class game():
             self.current=self.decidewhogoes("cpu")
         self.infolabel.update()
 
-        playSound("buttonclick.wav")
+        playSound("checkermove.wav")
 
     def SkipTurn(self):
         if(self.isGameUnderway=="cpu"):
@@ -1431,7 +1429,7 @@ class game():
             else:
                 self.current="p1"
 
-        playSound("buttonclick.wav")
+        playSound("checkermove.wav")
     #updates the color of the board
     def updateColor(self, gametype):
         #gametype is either CheckersBoardPVP or CehckersBoardCPU
@@ -1446,7 +1444,7 @@ class game():
         self.appendButtons()
         self.winner = self.checkWinner()
 
-        playSound("buttonclick.wav")
+        playSound("checkermove.wav")
 
     def createNewGame(self):
 

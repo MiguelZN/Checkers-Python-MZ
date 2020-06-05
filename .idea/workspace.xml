@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576297f-4fc0-4548-9393-33a0a8f73e0b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CheckersMZVERSION1.1.py" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersMZVERSION1.1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blackchecker.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/blackchecker.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blackchecker2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/blackchecker2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blackking.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/blackking.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blackking2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/blackking2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttonclick.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/buttonclick.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkermove.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/checkermove.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkermove2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sounds/checkermove2.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkerslogo.ico" beforeDir="false" afterPath="$PROJECT_DIR$/images/checkerslogo.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkersmz1.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/checkersmz1.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkersmz2.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/checkersmz2.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkersmz3.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/images/checkersmz3.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redchecker.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/redchecker.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redking.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/redking.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redking2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/redking2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selectedchecker.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/selectedchecker.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transparent.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/transparent.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersMZVERSION1.11.py" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersMZVERSION1.11.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,10 +13,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CheckersMZVERSION1.1.py">
+        <entry file="file://$PROJECT_DIR$/CheckersMZVERSION1.11.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+            <state relative-caret-position="150">
+              <caret line="1031" column="30" selection-start-line="1031" selection-start-column="30" selection-end-line="1031" selection-end-column="30" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -43,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/simpleaudio/shiny.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="159">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -64,6 +48,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CheckersMZVERSION1.1.py" />
+        <option value="$PROJECT_DIR$/CheckersMZVERSION1.11.py" />
       </list>
     </option>
   </component>
@@ -85,6 +70,11 @@
             <path>
               <item name="Checkers-Python-MZ" type="b2602c69:ProjectViewProjectNode" />
               <item name="Checkers-Python-MZ" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Checkers-Python-MZ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Checkers-Python-MZ" type="462c0819:PsiDirectoryNode" />
+              <item name="sounds" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -176,15 +166,15 @@
   <component name="editorHistoryManager">
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/simpleaudio/shiny.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="159">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CheckersMZVERSION1.1.py">
+    <entry file="file://$PROJECT_DIR$/CheckersMZVERSION1.11.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+        <state relative-caret-position="150">
+          <caret line="1031" column="30" selection-start-line="1031" selection-start-column="30" selection-end-line="1031" selection-end-column="30" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
