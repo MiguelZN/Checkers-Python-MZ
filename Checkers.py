@@ -1,8 +1,10 @@
-from tkinter import *
+import tkinter as tk
+from tkinter import ttk
 from PIL import ImageTk,Image
 import shelve, time, random, threading, functools,platform,os
 from enum import Enum
 import simpleaudio as sa
+import sys
 
 #Current issues:
 #MAC:
@@ -158,18 +160,18 @@ class selected():
         self.selectedrow = row
         self.selectedcolumn = column
 #----------------------------------------------------------------------------------------------------------------------------
-class CheckersBoardGUI(Frame):
+class CheckersBoardGUI(tk.Frame):
     #This creates the board and appends the colors of the tiles
     def createBoard(self, color1, color2):
         for i in range (len(self.board.getBoard())):
             row = []
             for j in range (len(self.board.getBoard())):
                 if (i % 2) == 0 and (j % 2) == 0:
-                    row.append(Button(self, width=4, height=2, bg=color1))
+                    row.append(tk.Button(self, width=4, height=2, bg=color1))
                 elif (i%2)==0 or (j%2)==0:
-                    row.append(Button(self, width = 4, height = 2, bg = color2))
+                    row.append(tk.Button(self, width = 4, height = 2, bg = color2))
                 else:
-                    row.append(Button(self,width =4, height=2, bg = color1))
+                    row.append(tk.Button(self,width =4, height=2, bg = color1))
             self.buttonlist.append(row)
         self.showboard(self.buttonlist)
     #This grids all of the buttons to the root and sets the images of the checkers
@@ -234,7 +236,7 @@ class CheckersBoardGUI(Frame):
     def Show(self):
         self.grid()
 #----------------------------------------------------------------------------------------------------------------------------
-class SettingsGUI(Frame):
+class SettingsGUI(tk.Frame):
 
     def __init__(self,root, gamewidth, gameheight):
         super().__init__(root, width = gamewidth, height = gameheight+100, bg = "navajowhite3")
@@ -274,51 +276,51 @@ class SettingsGUI(Frame):
 
 
 
-        self.Title = Label(self, text = "Settings", font = "none 30 bold")
-        self.Title.place(relx = .5, rely=.1, anchor = CENTER)
+        self.Title = tk.Label(self, text = "Settings", font = "none 30 bold")
+        self.Title.place(relx = .5, rely=.1, anchor = tk.CENTER)
 
-        self.Options = Label(self, text="Options:", font="none 10 bold")
-        self.Options.place(relx=self.Flashingx, rely=.2, anchor=CENTER)
+        self.Options = tk.Label(self, text="Options:", font="none 10 bold")
+        self.Options.place(relx=self.Flashingx, rely=.2, anchor=tk.CENTER)
 
-        self.isFlashing = BooleanVar()
+        self.isFlashing = tk.BooleanVar()
         self.isFlashing.set(True)
 
-        self.Flashing = Checkbutton(self, text= "Flash?",variable = self.isFlashing)
-        self.Flashing.place(relx = self.Flashingx, rely = .3, anchor =CENTER)
+        self.Flashing = tk.Checkbutton(self, text= "Flash?",variable = self.isFlashing)
+        self.Flashing.place(relx = self.Flashingx, rely = .3, anchor =tk.CENTER)
 
 
-        self.BoardColor1 = Label(self, text = "BoardColor1:", font = "none 10 bold")
-        self.BoardColor1.place(relx = self.color1relx, rely = .2, anchor = CENTER)
+        self.BoardColor1 = tk.Label(self, text = "BoardColor1:", font = "none 10 bold")
+        self.BoardColor1.place(relx = self.color1relx, rely = .2, anchor = tk.CENTER)
 
-        self.colorvalue1 = StringVar()
+        self.colorvalue1 = tk.StringVar()
         self.colorvalue1.set("saddle brown")
 
-        self.Color1Radio1 = Radiobutton(self, text="Brown", value = "saddle brown", variable = self.colorvalue1)
-        self.Color1Radio1.place(relx = self.color1relx, rely = .3, anchor = CENTER)
-        self.Color1Radio2 = Radiobutton(self, text="Dark Gray", value="dark gray", variable=self.colorvalue1)
-        self.Color1Radio2.place(relx=self.color1relx, rely=.4, anchor=CENTER)
-        self.Color1Radio3 = Radiobutton(self, text="Blue", value="royal blue", variable=self.colorvalue1)
-        self.Color1Radio3.place(relx=self.color1relx, rely=.5, anchor=CENTER)
-        self.Color1Radio4= Radiobutton(self, text="Green", value="green3", variable=self.colorvalue1)
-        self.Color1Radio4.place(relx=self.color1relx, rely=.6, anchor=CENTER)
+        self.Color1Radio1 = tk.Radiobutton(self, text="Brown", value = "saddle brown", variable = self.colorvalue1)
+        self.Color1Radio1.place(relx = self.color1relx, rely = .3, anchor = tk.CENTER)
+        self.Color1Radio2 = tk.Radiobutton(self, text="Dark Gray", value="dark gray", variable=self.colorvalue1)
+        self.Color1Radio2.place(relx=self.color1relx, rely=.4, anchor=tk.CENTER)
+        self.Color1Radio3 = tk.Radiobutton(self, text="Blue", value="royal blue", variable=self.colorvalue1)
+        self.Color1Radio3.place(relx=self.color1relx, rely=.5, anchor=tk.CENTER)
+        self.Color1Radio4= tk.Radiobutton(self, text="Green", value="green3", variable=self.colorvalue1)
+        self.Color1Radio4.place(relx=self.color1relx, rely=.6, anchor=tk.CENTER)
 
-        self.BoardColor2 = Label(self, text="BoardColor2:", font="none 10 bold")
-        self.BoardColor2.place(relx=self.color2relx, rely=.2, anchor=CENTER)
+        self.BoardColor2 = tk.Label(self, text="BoardColor2:", font="none 10 bold")
+        self.BoardColor2.place(relx=self.color2relx, rely=.2, anchor=tk.CENTER)
 
-        self.colorvalue2 = StringVar()
+        self.colorvalue2 = tk.StringVar()
         self.colorvalue2.set("tan")
 
-        self.Color2Radio1 = Radiobutton(self, text="Tan", value="tan", variable=self.colorvalue2)
-        self.Color2Radio1.place(relx=self.color2relx, rely=.3, anchor=CENTER)
+        self.Color2Radio1 = tk.Radiobutton(self, text="Tan", value="tan", variable=self.colorvalue2)
+        self.Color2Radio1.place(relx=self.color2relx, rely=.3, anchor=tk.CENTER)
 
-        self.Color2Radio2 = Radiobutton(self, text="Red", value="tomato", variable=self.colorvalue2)
-        self.Color2Radio2.place(relx=self.color2relx, rely=.4, anchor=CENTER)
+        self.Color2Radio2 = tk.Radiobutton(self, text="Red", value="tomato", variable=self.colorvalue2)
+        self.Color2Radio2.place(relx=self.color2relx, rely=.4, anchor=tk.CENTER)
 
-        self.Color2Radio3 = Radiobutton(self, text="Gold", value="yellow2", variable=self.colorvalue2)
-        self.Color2Radio3.place(relx=self.color2relx, rely=.5, anchor=CENTER)
+        self.Color2Radio3 = tk.Radiobutton(self, text="Gold", value="yellow2", variable=self.colorvalue2)
+        self.Color2Radio3.place(relx=self.color2relx, rely=.5, anchor=tk.CENTER)
 
-        self.Color2Radio4 = Radiobutton(self, text="White", value="snow", variable=self.colorvalue2)
-        self.Color2Radio4.place(relx=self.color2relx, rely=.6, anchor=CENTER)
+        self.Color2Radio4 = tk.Radiobutton(self, text="White", value="snow", variable=self.colorvalue2)
+        self.Color2Radio4.place(relx=self.color2relx, rely=.6, anchor=tk.CENTER)
 
         self.Color1Radio1.select()
         self.Color2Radio1.select()
@@ -331,7 +333,7 @@ class SettingsGUI(Frame):
         self.MAINMENUSELECTED = True
         self.grid()
 #----------------------------------------------------------------------------------------------------------------------------
-class mainMenu(Frame):
+class mainMenu(tk.Frame):
     def __init__(self,root, gamewidth, gameheight, listofgui):
         super().__init__(root, width = gamewidth, height = gameheight+100, bg = "navajowhite3")
 
@@ -368,30 +370,26 @@ class mainMenu(Frame):
         self.listofcheckerimages = [self.BLACKCHECKER,self.REDCHECKER,self.REDKING,self.BLACKKING, self.SELECTEDCHECKER]
 
         #IMAGES
-        self.leftcimage = Label(self, image = random.choice(self.listofcheckerimages))
-        self.leftcimage.place(relx= .15, rely=.15, anchor = CENTER)
+        self.leftcimage = ttk.Label(self, image = random.choice(self.listofcheckerimages))
+        self.leftcimage.place(relx= .15, rely=.15, anchor = tk.CENTER)
 
-        self.rightcimage = Label(self, image= random.choice(self.listofcheckerimages))
-        self.rightcimage.place(relx=.85, rely=.15, anchor=CENTER)
+        self.rightcimage = ttk.Label(self, image= random.choice(self.listofcheckerimages))
+        self.rightcimage.place(relx=.85, rely=.15, anchor=tk.CENTER)
 
-        self.Title = Label(self, text = "CHECKERS", font = "none 28 bold italic")
-        self.Author = Label(self, text= "Python Project- Miguel Zavala", font = "none 8 bold")
-        #self.Title.pack(pady= 20)
-        self.Title.place(relx = .5, rely=.1, anchor = CENTER)
-        self.Author.place(relx=.5, rely=.19, anchor=CENTER)
+        self.Title = tk.Label(self, text = "CHECKERS", font = "none 28 bold italic")
+        self.Author = tk.Label(self, text= "Python Project- Miguel Zavala", font = "none 8 bold")
+        self.Title.place(relx = .5, rely=.1, anchor = tk.CENTER)
+        self.Author.place(relx=.5, rely=.19, anchor=tk.CENTER)
 
-        self.vsCPU = Button(self, text = "Player vs Computer", bg = "ivory2", height = self.buttonheight, width =self.buttonwidth)
-        #self.vsCPU.pack(pady=10)
-        self.vsCPU.place(relx = .5, rely= .35, anchor = CENTER)
+        self.vsCPU = tk.Button(self, text = "Player vs Computer", bg = "ivory2", height = self.buttonheight, width =self.buttonwidth)
+        self.vsCPU.place(relx = .5, rely= .35, anchor = tk.CENTER)
 
-        self.twoPlayer = Button(self, text = "Player vs Player", bg = "ivory2",height = self.buttonheight, width =self.buttonwidth)
-        self.twoPlayer.place(relx= .5, rely = .5, anchor = CENTER)
-        #self.twoPlayer.pack(pady=10)
+        self.twoPlayer = tk.Button(self, text = "Player vs Player", bg = "ivory2",height = self.buttonheight, width =self.buttonwidth)
+        self.twoPlayer.place(relx= .5, rely = .5, anchor = tk.CENTER)
 
-        self.settings = Button(self, text="Settings", bg="ivory2", height=self.buttonheight,
+        self.settings = tk.Button(self, text="Settings", bg="ivory2", height=self.buttonheight,
                                 width=self.buttonwidth)
-        #self.settings.pack(pady=30)
-        self.settings.place(relx=.5, rely=.65, anchor=CENTER)
+        self.settings.place(relx=.5, rely=.65, anchor=tk.CENTER)
 
 
     def updateTitleImages(self):
@@ -419,7 +417,7 @@ class mainMenu(Frame):
         self.MAINMENUSELECTED = True
         self.grid()
 #----------------------------------------------------------------------------------------------------------------------------
-class infoGUI(Frame):
+class infoGUI(tk.Frame):
     def updatelabel(self, gametype, currentplayer):
         textcolorcpu = "black"
         textcolorplayer = "red"
@@ -452,7 +450,7 @@ class infoGUI(Frame):
         self.labelinfo.config(text="Current Turn:\n" + labelplayer, fg=currentcolor)
 
 
-        #self.labelinfo.place(relx = .5, rely= .5, anchor = CENTER)
+        #self.labelinfo.place(relx = .5, rely= .5, anchor = tk.CENTER)
 
 
 #GOOD NOW
@@ -508,24 +506,24 @@ class infoGUI(Frame):
 
         super().__init__(root,width= 100, height = 350)
 
-        self.labelinfo = Label(self, text = "Current Turn:\n"+self.currentturn, font = "none 10 bold", fg = self.textcolor, anchor = N)
-        self.labelinfo.place(relx = .5, rely = .5, anchor =CENTER)
+        self.labelinfo = tk.Label(self, text = "Current Turn:\n"+self.currentturn, font = "none 10 bold", fg = self.textcolor, anchor = tk.N)
+        self.labelinfo.place(relx = .5, rely = .5, anchor =tk.CENTER)
 
 
         #SHOWCASES HOW MUCH EACH PLAYER HAS TAKEN FROM THE OTHER PLAYER
-        self.HoldTakenRed = Frame(self)
-        self.numberTakenRed = Label(self.HoldTakenRed, text ="x0", font = "none 10 bold")
-        self.HoldImageRed = Label(self.HoldTakenRed, image=self.REDCHECKER)
+        self.HoldTakenRed = tk.Frame(self)
+        self.numberTakenRed = tk.Label(self.HoldTakenRed, text ="x0", font = "none 10 bold")
+        self.HoldImageRed = tk.Label(self.HoldTakenRed, image=self.REDCHECKER)
         self.numberTakenRed.grid(row= 0, column=0)
         self.HoldImageRed.grid(row=0, column=1)
-        self.HoldTakenRed.place(relx = .5, rely =.2, anchor = CENTER)
+        self.HoldTakenRed.place(relx = .5, rely =.2, anchor = tk.CENTER)
 
-        self.HoldTakenBlack = Frame(self)
-        self.numberTakenBlack = Label(self.HoldTakenBlack, text="x0",font= "none 10 bold")
-        self.HoldImageBlack = Label(self.HoldTakenBlack, image = self.BLACKCHECKER)
+        self.HoldTakenBlack = tk.Frame(self)
+        self.numberTakenBlack = tk.Label(self.HoldTakenBlack, text="x0",font= "none 10 bold")
+        self.HoldImageBlack = tk.Label(self.HoldTakenBlack, image = self.BLACKCHECKER)
         self.numberTakenBlack.grid(row= 0, column = 0)
         self.HoldImageBlack.grid(row = 0, column = 1)
-        self.HoldTakenBlack.place(relx=.5, rely=.8, anchor=CENTER)
+        self.HoldTakenBlack.place(relx=.5, rely=.8, anchor=tk.CENTER)
 
 
     def updateLabels(self, amount1, amount2):
@@ -536,10 +534,6 @@ class infoGUI(Frame):
 
 
 class game():
-
-
-
-
 
     def PlayCPUTurn(self):
         if(self.isGameUnderway=="cpu" and self.current=="cpu"):
@@ -1107,7 +1101,7 @@ class game():
 
     def updateTime(self):
         self.timelabel.config(text ="Time:"+str(self.getSeconds())+"s,"+str(self.getMinutes())+"m,"+str(self.getHours())+"hr", font = "none 10 bold",fg="blue" )
-        self.timelabel.pack(side=TOP, padx=10, pady=10, anchor=S)
+        self.timelabel.pack(side=tk.TOP, padx=10, pady=10, anchor=tk.S)
         self.timelabel.pack_propagate(0)
 
 
@@ -1165,7 +1159,7 @@ class game():
         #GUI
         self.gameheight = 400
         self.gamewidth = 450
-        self.root = Tk()
+        self.root = tk.Tk()
         self.root.resizable(0,0)
         self.root.geometry(str(self.gamewidth)+"x"+str(self.gameheight))
         self.root.minsize(self.gamewidth,self.gameheight)
@@ -1174,49 +1168,36 @@ class game():
         self.root.iconbitmap(IMAGE_DIR+SL+"checkerslogo.ico")
         self.root.grid()
 
-        self.optionsTab = Menu()
-        self.gameOptionsTab = Menu()
-        self.root.config(menu = self.optionsTab)
-
-        self.subOptionsTab = Menu()
-        self.optionsTab.add_cascade(menu = self.subOptionsTab, label = "Navigate")
-
+        self.subOptionsTab = tk.Menu()
         self.subOptionsTab.add_cascade(label = "Go to MainMenu", command = self.gotoMainMenu)
         self.subOptionsTab.add_cascade(label = "Go to Settings", command = self.SettingsSelected)
+        self.optionsTab = tk.Menu()
+        self.optionsTab.add_cascade(menu = self.subOptionsTab, label = "Navigate")
 
-        self.infolabel = ""
-        self.timelabel = Label(self.infolabel, text="Time:0s,0m,0hr", font="none 10 bold", fg="blue", wraplength=150,
-                               width=13)
-
-        self.SettingsGUI = SettingsGUI(self.root, self.gamewidth, self.gameheight)
+        self.gameOptionsTab = tk.Menu()
+        self.root.config(menu = self.optionsTab)
 
         self.CheckersGUIPVP = CheckersGUI(self.root)
         self.CheckersGUICPU = CheckersGUI(self.root)
+        self.guilist = [self.CheckersGUIPVP, self.CheckersGUICPU]
+
+        self.infolabel = infoGUI(self.root, self.isGameUnderway, self.current)
+        self.timelabel = tk.Label(self.infolabel, text="Time:0s,0m,0hr", font="none 10 bold", fg="blue", wraplength=150,
+                               width=13)
+
+        self.SettingsGUI = SettingsGUI(self.root, self.gamewidth, self.gameheight)
 
         self.board1color = self.SettingsGUI.colorvalue1.get()
         self.board2color = self.SettingsGUI.colorvalue2.get()
 
         self.CheckersBoardGUI = ""
-        #self.CheckersBoardGUICPU = ""
-        #self.CheckersBoardGUICPU = CheckersBoardGUI(self.CheckersGUICPU, size= self.size,board= self.board, board1color=self.board1color, board2color=self.board2color)
-        #self.CheckersBoardGUICPU.grid(row=1, column=1, pady=20)
-
-
-
-
-
-
-
-        self.guilist = [self.CheckersGUIPVP,self.CheckersGUICPU]
 
         self.mainMenu = mainMenu(self.root, self.gamewidth,self.gameheight, self.guilist)
         self.mainMenu.twoPlayer.config(command = self.TwoPlayerButtonSelected)
         self.mainMenu.settings.config(command = self.SettingsSelected)
         self.mainMenu.vsCPU.config(command = self.SelectedvsCPU)
-
         self.mainMenu.Show()
 
-        #self.appendButtons()
         self.winner = ""
 
         self.run()
@@ -1228,9 +1209,7 @@ class game():
             i.grid_remove()
         self.mainMenu.Show()
         self.optionsTab.delete(2)
-        self.optionsTab.delete(1)
     def ReturnToGame(self):
-        self.optionsTab.delete(1)
         self.optionsTab.delete(2)
         if(self.isGameUnderway=="pvp"):
             self.createGameOptionsTab(self.createNewGame)
@@ -1281,8 +1260,6 @@ class game():
             self.CheckersBoardGUI = CheckersBoardGUI(self.CheckersGUIPVP, size=self.size, board=self.board,
                                                      board1color=self.board1color, board2color=self.board2color)
             self.CheckersBoardGUI.grid(row=1, column=1, pady=20)
-
-            #self.subOptionsTab.add_cascade(label = "Return to Current Game", command = self.ReturnToGame)
 
             self.infolabel = infoGUI(self.CheckersGUIPVP, self.isGameUnderway, self.current)
             self.infolabel.grid(row=1, column=0, pady=10, padx=10)
@@ -1335,8 +1312,6 @@ class game():
                                                      board1color=self.board1color, board2color=self.board2color)
             self.CheckersBoardGUI.grid(row=1, column=1, pady=20)
 
-            #self.subOptionsTab.add_cascade(label="Return to Current Game", command=self.ReturnToGame)
-
             self.infolabel = infoGUI(self.CheckersGUICPU, self.isGameUnderway, self.current)
             self.infolabel.grid(row=1, column=0, pady=10, padx=10)
 
@@ -1361,7 +1336,6 @@ class game():
         self.CheckersGUICPU.Hide()
         self.SettingsGUI.Show()
         self.optionsTab.delete(2)
-        self.optionsTab.delete(1)
 
         playSound("checkermove.wav")
 
@@ -1415,7 +1389,7 @@ class game():
 
 
     def createGameOptionsTab(self, game):
-        gameOptions = Menu()
+        gameOptions = tk.Menu()
 
         self.optionsTab.add_cascade(menu = gameOptions, label = "Game Options")
         gameOptions.add_cascade(label = "Start New Game", command = game)
@@ -1675,7 +1649,7 @@ class game():
 
 
 
-class CheckersGUI(Frame):
+class CheckersGUI(tk.Frame):
     def __init__(self,root):
         super().__init__(root)
     def Hide(self):
